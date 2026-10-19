@@ -3,6 +3,21 @@
    LEON GABARDA — MAIN STYLES
    ========================= */
 
+@font-face {
+  font-family: "Neue Helvetica";
+  src: local("Neue Helvetica Bold"),
+       local("Helvetica Neue Bold");
+  font-weight: 700;
+  font-style: normal;
+}
+
+body {
+  font-family: "Neue Helvetica", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+}
+
+
+
 :root {
   --background: #ffffff;
   --text: #080808;
@@ -108,17 +123,17 @@ img {
   top: 305px;
   left: 0;
   width: 100%;
-  padding: 0 25px;
+  padding: 0 24px;
   text-align: center;
 }
 
 .statement p {
-  margin: 0;
+  margin: 0 auto;
+  max-width: 1000px;
   font-size: clamp(13px, 2.2vw, 17px);
   font-weight: 900;
   line-height: 1.05;
   letter-spacing: -0.45px;
-  text-transform: uppercase;
 }
 
 /* =========================
