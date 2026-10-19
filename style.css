@@ -1,0 +1,277 @@
+
+/* =========================
+   LEON GABARDA — MAIN STYLES
+   ========================= */
+
+:root {
+  --background: #ffffff;
+  --text: #080808;
+  --burgundy: #4a0928;
+  --font-main: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+  font-family: var(--font-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* =========================
+   HEADER / LOGO
+   ========================= */
+
+.header {
+  width: 100%;
+  height: 115px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.brand span {
+  font-size: 17px;
+  line-height: 0.88;
+  font-weight: 900;
+  letter-spacing: -0.7px;
+  text-align: right;
+}
+
+.brand-logo {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
+/* =========================
+   INTRO / PHOTOGRAPHS
+   ========================= */
+
+.intro {
+  position: relative;
+  width: 100%;
+  min-height: 620px;
+  padding-top: 60px;
+}
+
+.photo {
+  width: 188px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  background: #eeeeee;
+}
+
+.photo-top {
+  height: 255px;
+}
+
+.photo-bottom {
+  height: 255px;
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Text across both photographs */
+
+.statement {
+  position: absolute;
+  z-index: 2;
+  top: 305px;
+  left: 0;
+  width: 100%;
+  padding: 0 25px;
+  text-align: center;
+}
+
+.statement p {
+  margin: 0;
+  font-size: clamp(13px, 2.2vw, 17px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.45px;
+  text-transform: uppercase;
+}
+
+/* =========================
+   BOTTOM SECTION
+   ========================= */
+
+.next-section {
+  width: 100%;
+  min-height: 480px;
+  padding: 65px 24px 100px;
+}
+
+.section-label {
+  margin: 0;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.2;
+  font-weight: 900;
+}
+
+.bottom-content {
+  width: min(600px, 100%);
+  margin: 125px auto 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: 40px;
+}
+
+.description {
+  margin: 0;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.05;
+  font-weight: 900;
+  letter-spacing: -0.3px;
+}
+
+.contact {
+  justify-self: center;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.2;
+  font-weight: 900;
+  text-decoration: none;
+  transition: opacity 180ms ease;
+}
+
+.contact:hover {
+  opacity: 0.5;
+}
+
+/* =========================
+   FLOATING BURGUNDY SHIELD
+   ========================= */
+
+.floating-shield {
+  position: fixed;
+  z-index: 10;
+  width: 86px;
+  height: 96px;
+  right: max(9%, calc((100vw - 850px) / 2));
+  top: 56%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/*
+  White silhouette with screen blending:
+  makes the content beneath the silhouette white.
+*/
+
+.shield-mask {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  mix-blend-mode: screen;
+}
+
+/* The burgundy logo sits above the white silhouette */
+
+.shield-logo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 600px) {
+
+  .header {
+    height: 100px;
+  }
+
+  .brand span {
+    font-size: 15px;
+  }
+
+  .brand-logo {
+    width: 39px;
+    height: 39px;
+  }
+
+  .intro {
+    min-height: 560px;
+    padding-top: 45px;
+  }
+
+  .photo {
+    width: 160px;
+  }
+
+  .photo-top,
+  .photo-bottom {
+    height: 230px;
+  }
+
+  .statement {
+    top: 260px;
+    padding: 0 12px;
+  }
+
+  .statement p {
+    font-size: 12px;
+    line-height: 1.08;
+    letter-spacing: -0.3px;
+  }
+
+  .next-section {
+    min-height: 410px;
+    padding-top: 45px;
+  }
+
+  .bottom-content {
+    margin-top: 100px;
+    gap: 20px;
+  }
+
+  .description,
+  .contact {
+    font-size: 11px;
+  }
+
+  .floating-shield {
+    width: 65px;
+    height: 74px;
+    right: 8%;
+    top: 58%;
+  }
+}
