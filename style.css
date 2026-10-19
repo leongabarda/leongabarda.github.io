@@ -206,14 +206,6 @@ img {
   makes the content beneath the silhouette white.
 */
 
-.shield-mask {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  mix-blend-mode: screen;
-}
-
 /* The burgundy logo sits above the white silhouette */
 
 .shield-logo {
