@@ -1,274 +1,154 @@
 
 
-@font-face {
-  font-family: "Neue Helvetica";
-  src: local("Neue Helvetica Bold"),
-       local("Helvetica Neue Bold");
-  font-weight: 700;
-}
-
 :root {
   --black: #080808;
-  --burgundy: #4a0928;
+  --purple: #480e29;      /* ajusta al tono exacto de tu marca */
+  --gray: #555555;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
   background: #fff;
   color: var(--black);
-  font-family: "Neue Helvetica", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 700;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-img {
-  display: block;
+img { display: block; }
+
+/*
+  ESCENARIO: diseño base 270 x 525.
+  Todo va en cqw (1cqw = 1% del ancho del escenario),
+  así escala igual en móvil y PC.
+*/
+.stage {
+  position: relative;
+  width: min(100%, 600px);   /* máximo en PC */
+  aspect-ratio: 270 / 525;
+  margin: 0 auto;
+  container-type: inline-size;
+  overflow: hidden;
 }
+
+.stage > * { position: absolute; }
 
 /* HEADER */
-
 .header {
-  height: 125px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.header a {
-  display: block;
-}
-
-.header-logo {
-  width: 110px;
-  height: 65px;
-  object-fit: contain;
-}
-
-/* MAIN PHOTO COMPOSITION */
-
-.hero {
-  position: relative;
-  min-height: 620px;
-  padding-top: 35px;
-}
-
-.photos {
-  width: 188px;
-  margin: 0 auto;
-}
-
-.photo {
-  width: 100%;
-  height: 245px;
-  object-fit: cover;
-}
-
-.photo-two {
-  margin-top: 0;
-}
-
-/* CENTERED BLACK STATEMENT */
-
-.statement {
-  position: absolute;
-  z-index: 2;
-  top: 270px;
+  top: 2.5cqw;
   left: 50%;
   transform: translateX(-50%);
-  width: 100%;
-  padding: 0 28px;
-
-  color: #080808;
-  text-align: center;
-  font-size: clamp(13px, 1.5vw, 17px);
-  line-height: 1.05;
-  font-weight: 900;
-  letter-spacing: -0.35px;
+  width: 20cqw;
+  z-index: 6;
 }
+.header-logo { width: 100%; height: auto; }
 
-/* FLOATING BURGUNDY SHIELD */
+/* FOTOS */
+.photo {
+  left: 35.2cqw;
+  width: 24cqw;
+  height: 32.2cqw;
+  object-fit: cover;
+}
+.photo-one { top: 23.3cqw; }
+.photo-two { top: 61.1cqw; }
 
-.floating-shield {
-  position: fixed;
-  z-index: 5;
-  width: 90px;
-  height: 100px;
-  top: 57%;
-  right: 12%;
+/* TEXTOS */
+.statement {
+  left: 0;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 2.15cqw;
+  line-height: 3cqw;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+.statement-top    { top: 53.6cqw; z-index: 3; }
+.statement-bottom { top: 166.2cqw; z-index: 1; }
+
+/* ESCUDO (ya no es fixed) */
+.shield {
+  top: 87.5cqw;
+  left: 63.5cqw;
+  width: 11.5cqw;
+  height: 13.5cqw;
   object-fit: contain;
+  z-index: 5;
   pointer-events: none;
 }
 
-/* LOWER SECTION */
-
-.lower {
-  min-height: 480px;
-  padding: 45px 25px 100px;
-}
-
+/* INTRO */
 .intro-title {
-  margin: 0;
-  text-align: center;
-  font-size: 14px;
-  line-height: 1.2;
-  font-weight: 900;
-}
-
-.lower-layout {
-  position: relative;
-  width: min(650px, 100%);
-  min-height: 270px;
-  margin: 85px auto 0;
-}
-
-/* NUMBER CIRCLE */
-
-.orbit {
-  position: absolute;
-  left: 8%;
-  top: 0;
-  width: 150px;
-  height: 150px;
-}
-
-.orbit-logo {
-  position: absolute;
-  width: 42px;
-  height: 42px;
-  object-fit: contain;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.number {
-  position: absolute;
-  font-size: 12px;
-  font-weight: 900;
-  line-height: 1;
-}
-
-.n1  { top: 0; left: 70px; }
-.n2  { top: 10px; right: 22px; }
-.n3  { top: 37px; right: 2px; }
-.n4  { top: 70px; right: 0; }
-.n5  { bottom: 17px; right: 17px; }
-.n6  { bottom: 0; left: 70px; }
-.n7  { bottom: 12px; left: 28px; }
-.n8  { top: 70px; left: 0; }
-.n9  { top: 38px; left: 6px; }
-.n10 { top: 12px; left: 22px; }
-.n11 { top: 22px; left: 49px; }
-.n12 { top: 48px; left: 22px; }
-
-/* BOTTOM TEXT */
-
-.description {
-  position: absolute;
-  top: 185px;
+  top: 105.8cqw;
   left: 0;
-  width: 50%;
+  width: 100%;
   margin: 0;
   text-align: center;
-  font-size: 12px;
-  font-weight: 900;
-  line-height: 1.08;
+  font-size: 2cqw;
+  line-height: 1;
+  font-weight: 800;
+}
+.intro-title span { font-weight: 500; }
+
+/* CÍRCULO DE NÚMEROS */
+.orbit {
+  top: 138.9cqw;
+  left: 25.2cqw;
+  width: 0;
+  height: 0;
+  z-index: 4;
+  color: var(--purple);
 }
 
-.contact {
+.num {
   position: absolute;
-  top: 185px;
-  right: 8%;
+  top: 0;
+  left: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 3.4cqw;
+  font-weight: 700;
+  line-height: 1;
+  /* coloca cada elemento en el círculo según --a */
+  transform:
+    translate(-50%, -50%)
+    rotate(var(--a))
+    translateY(-15.5cqw)
+    rotate(calc(var(--a) * -1));
+}
+
+.emblem {
+  width: 5.5cqw;
+  height: 5.5cqw;
+  object-fit: contain;
+}
+
+/* BLOQUE GRIS */
+.gray-block {
+  top: 141.5cqw;
+  left: 35.2cqw;
+  width: 24cqw;
+  height: 32.6cqw;
+  background: var(--gray);
+  z-index: 2;
+}
+
+/* CONTACT */
+.contact {
+  top: 172.2cqw;
+  left: 59.5cqw;
+  font-size: 1.7cqw;
+  line-height: 1;
+  font-weight: 800;
   color: var(--black);
-  font-size: 12px;
-  font-weight: 900;
   text-decoration: none;
+  z-index: 6;
 }
-
-.contact:hover {
-  opacity: 0.5;
-}
-
-/* MOBILE */
-
-@media (max-width: 600px) {
-  .header {
-    height: 100px;
-  }
-
-  .header-logo {
-    width: 100px;
-    height: 60px;
-  }
-
-  .hero {
-    min-height: 510px;
-    padding-top: 25px;
-  }
-
-  .photos {
-    width: 160px;
-  }
-
-  .photo {
-    height: 195px;
-  }
-
-  .statement {
-    top: 225px;
-    padding: 0 12px;
-    font-size: 11px;
-    line-height: 1.08;
-    letter-spacing: -0.2px;
-  }
-
-  .floating-shield {
-    width: 65px;
-    height: 75px;
-    right: 9%;
-    top: 53%;
-  }
-
-  .lower {
-    padding: 40px 20px 70px;
-    min-height: 420px;
-  }
-
-  .lower-layout {
-    margin-top: 65px;
-    min-height: 260px;
-  }
-
-  .orbit {
-    left: 50%;
-    transform: translateX(-50%);
-    width: 125px;
-    height: 125px;
-  }
-
-  .orbit-logo {
-    width: 36px;
-    height: 36px;
-  }
-
-  .description {
-    top: 165px;
-    width: 65%;
-    font-size: 10px;
-  }
-
-  .contact {
-    top: 165px;
-    right: 0;
-    font-size: 10px;
-  }
-}
-
+.contact:hover { opacity: .5; }
