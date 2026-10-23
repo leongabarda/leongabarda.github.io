@@ -102,13 +102,13 @@ img { display: block; max-width: none; }
   justify-content: center;
 }
 
-/* RELOJ (solo el vector) */
+/* RELOJ (solo el vector) - más grande */
 .clock {
-  --w: calc(var(--u) * 42);
+  --w: calc(var(--u) * 50);
   position: absolute;
   z-index: 2;
-  left: calc(var(--u) * 1);
-  top: calc(var(--u) * -22);
+  left: 0;
+  top: calc(var(--u) * -26);
   width: var(--w);
   pointer-events: none;
 }
