@@ -4,9 +4,9 @@
   /* 1 unidad = 1% del ancho; en PC también se limita por la altura de la ventana */
   --u: min(1vw, 0.6vh);
 
-  /* UN solo estilo para todo el texto */
-  --text-color: #480e29;
-  --fs: calc(var(--u) * 1.85);
+  /* UN solo color y tamaño para todo */
+  --c: #480e29;
+  --fs: calc(var(--u) * 3.2);
 }
 
 @supports (height: 1svh) {
@@ -21,7 +21,7 @@ html, body {
 }
 
 body {
-  color: var(--text-color);
+  color: var(--c);
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: var(--fs);
   font-weight: 700;
@@ -40,86 +40,96 @@ p, h2, a {
 
 img { display: block; max-width: none; }
 
-/* ESCENARIO (más alto: la primera pantalla llega hasta INTRO) */
-.stage {
-  position: relative;
-  width: calc(var(--u) * 100);
-  height: calc(var(--u) * 270);
-  margin: 0 auto;
-  overflow: hidden;
+/* VECTORES RECOLOREADOS CON #480e29 (SVG como máscara) */
+.logo {
+  background: var(--c);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
 }
 
-.stage > * { position: absolute; }
+/* PÁGINA */
+.page {
+  width: calc(var(--u) * 100);
+  margin: 0 auto;
+  padding: calc(var(--u) * 6) 0 calc(var(--u) * 14);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 /* HEADER */
-.header {
-  top: calc(var(--u) * 7);
-  left: calc(50% - var(--u) * 9.7);
-  width: calc(var(--u) * 19.4);
-  z-index: 6;
-}
-.header img { width: 100%; height: auto; }
+.header { display: block; margin-bottom: calc(var(--u) * 5); }
 
-/* FOTOS (todas del mismo tamaño) */
+.header-logo {
+  width: calc(var(--u) * 36);
+  aspect-ratio: 453 / 137;
+  -webkit-mask-image: url("./Recurso%202lg.svg");
+  mask-image: url("./Recurso%202lg.svg");
+}
+
+/* FOTOS (todas iguales) */
 .photo {
-  left: calc(50% - var(--u) * 21.95);
-  width: calc(var(--u) * 43.9);
-  height: calc(var(--u) * 58);
+  width: calc(var(--u) * 44);
+  height: calc(var(--u) * 56);
   object-fit: cover;
 }
-.photo-one   { top: calc(var(--u) * 24);  z-index: 2; }
-.photo-two   { top: calc(var(--u) * 87.6); z-index: 2; }
-.photo-three { top: calc(var(--u) * 191);  z-index: 3; }
 
-/* TEXTO CENTRAL: entre foto 1 y foto 2, tocando las dos */
+/* TEXTO CENTRAL: pegado a la foto de arriba y a la de abajo */
 .statement {
-  left: 0;
   width: 100%;
+  padding: 0 calc(var(--u) * 3);
   text-align: center;
-  white-space: nowrap;
+  text-wrap: balance;
   letter-spacing: -0.01em;
-}
-
-.statement-top {
-  top: calc(var(--u) * 82);
-  z-index: 3;
 }
 
 /* INTRO centrado */
 .intro-title {
-  top: calc(var(--u) * 158);
-  left: 0;
-  width: 100%;
+  margin-top: calc(var(--u) * 8);
   text-align: center;
+}
+
+/* PARTE DE ABAJO */
+.lower {
+  position: relative;
+  width: 100%;
+  margin-top: calc(var(--u) * 30);
+  display: flex;
+  justify-content: center;
 }
 
 /* RELOJ (solo el vector) */
 .clock {
-  top: calc(var(--u) * 173.5);
-  left: calc(var(--u) * 2.5);
-  width: calc(var(--u) * 32);
-  height: auto;
-  z-index: 4;
+  position: absolute;
+  z-index: 2;
+  left: calc(var(--u) * 1);
+  top: calc(var(--u) * -22);
+  width: calc(var(--u) * 42);
+  aspect-ratio: 223 / 227;
+  -webkit-mask-image: url("./Recurso%204lg.svg");
+  mask-image: url("./Recurso%204lg.svg");
   pointer-events: none;
 }
 
-/* TEXTOS LATERALES DE LA FOTO DE ABAJO */
-/* La foto termina en 191 + 58 = 249 → bottom = 270 - 249 = 21 */
+/* TEXTOS LATERALES: pegados a la foto, en su borde inferior */
 .side {
-  bottom: calc(var(--u) * 21);
-  z-index: 6;
+  position: absolute;
+  bottom: 0;
+  z-index: 3;
 }
 
-/* Izquierda: alineado a la derecha, tocando la foto */
 .side-left {
-  right: calc(50% + var(--u) * 21.95);
+  right: calc(50% + var(--u) * 22);
   text-align: right;
   white-space: nowrap;
 }
 
-/* Derecha: CONTACT tocando la foto */
 .side-right {
-  left: calc(50% + var(--u) * 21.95);
+  left: calc(50% + var(--u) * 22);
   text-align: left;
 }
 .side-right:hover { opacity: .5; }
@@ -128,9 +138,11 @@ img { display: block; max-width: none; }
 .shield {
   position: fixed;
   z-index: 10;
-  top: 45vh;
-  left: calc(50vw + var(--u) * 16);
-  width: calc(var(--u) * 13);
-  height: auto;
+  top: 50vh;
+  left: calc(50vw + var(--u) * 14);
+  width: calc(var(--u) * 20);
+  aspect-ratio: 219 / 226;
+  -webkit-mask-image: url("./Recurso%203lg.svg");
+  mask-image: url("./Recurso%203lg.svg");
   pointer-events: none;
 }
