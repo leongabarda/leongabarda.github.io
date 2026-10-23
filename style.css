@@ -1,12 +1,16 @@
 
 
 :root {
-  /* 1 unidad = 1% del ancho (máx. 600px en PC) */
-  --u: min(1vw, 6px);
+  /* 1 unidad = 1% del ancho; en PC también se limita por la altura de la ventana */
+  --u: min(1vw, 0.6vh);
 
   /* UN solo estilo para todo el texto */
   --text-color: #080808;
   --fs: calc(var(--u) * 1.85);
+}
+
+@supports (height: 1svh) {
+  :root { --u: min(1vw, 0.6svh); }
 }
 
 * { box-sizing: border-box; }
@@ -36,11 +40,11 @@ p, h2, a {
 
 img { display: block; max-width: none; }
 
-/* ESCENARIO */
+/* ESCENARIO (más alto: la primera pantalla llega hasta INTRO) */
 .stage {
   position: relative;
   width: calc(var(--u) * 100);
-  height: calc(var(--u) * 194.4);
+  height: calc(var(--u) * 270);
   margin: 0 auto;
   overflow: hidden;
 }
@@ -49,7 +53,7 @@ img { display: block; max-width: none; }
 
 /* HEADER */
 .header {
-  top: calc(var(--u) * 5.5);
+  top: calc(var(--u) * 7);
   left: calc(50% - var(--u) * 9.7);
   width: calc(var(--u) * 19.4);
   z-index: 6;
@@ -58,14 +62,14 @@ img { display: block; max-width: none; }
 
 /* FOTOS (todas del mismo tamaño) */
 .photo {
-  left: calc(50% - var(--u) * 12.2);
-  width: calc(var(--u) * 24.4);
-  height: calc(var(--u) * 32.2);
+  left: calc(50% - var(--u) * 21.95);
+  width: calc(var(--u) * 43.9);
+  height: calc(var(--u) * 58);
   object-fit: cover;
 }
-.photo-one   { top: calc(var(--u) * 23.3);  z-index: 2; }
-.photo-two   { top: calc(var(--u) * 61.1);  z-index: 2; }
-.photo-three { top: calc(var(--u) * 141.5); z-index: 3; }
+.photo-one   { top: calc(var(--u) * 24);  z-index: 2; }
+.photo-two   { top: calc(var(--u) * 87.6); z-index: 2; }
+.photo-three { top: calc(var(--u) * 191);  z-index: 3; }
 
 /* TEXTO CENTRAL: entre foto 1 y foto 2, tocando las dos */
 .statement {
@@ -77,13 +81,13 @@ img { display: block; max-width: none; }
 }
 
 .statement-top {
-  top: calc(var(--u) * 55.5);
+  top: calc(var(--u) * 82);
   z-index: 3;
 }
 
 /* INTRO centrado */
 .intro-title {
-  top: calc(var(--u) * 106);
+  top: calc(var(--u) * 158);
   left: 0;
   width: 100%;
   text-align: center;
@@ -91,31 +95,31 @@ img { display: block; max-width: none; }
 
 /* RELOJ (solo el vector) */
 .clock {
-  top: calc(var(--u) * 121.5);
-  left: calc(var(--u) * 10);
-  width: calc(var(--u) * 31.5);
+  top: calc(var(--u) * 173.5);
+  left: calc(var(--u) * 2.5);
+  width: calc(var(--u) * 32);
   height: auto;
   z-index: 4;
   pointer-events: none;
 }
 
 /* TEXTOS LATERALES DE LA FOTO DE ABAJO */
-/* La foto termina en 141.5 + 32.2 = 173.7 → bottom = 194.4 - 173.7 = 20.7 */
+/* La foto termina en 191 + 58 = 249 → bottom = 270 - 249 = 21 */
 .side {
-  bottom: calc(var(--u) * 20.7);
+  bottom: calc(var(--u) * 21);
   z-index: 6;
 }
 
 /* Izquierda: alineado a la derecha, tocando la foto */
 .side-left {
-  right: calc(50% + var(--u) * 12.2);
+  right: calc(50% + var(--u) * 21.95);
   text-align: right;
   white-space: nowrap;
 }
 
 /* Derecha: CONTACT tocando la foto */
 .side-right {
-  left: calc(50% + var(--u) * 12.2);
+  left: calc(50% + var(--u) * 21.95);
   text-align: left;
 }
 .side-right:hover { opacity: .5; }
@@ -125,8 +129,8 @@ img { display: block; max-width: none; }
   position: fixed;
   z-index: 10;
   top: 45vh;
-  left: calc(50vw + var(--u) * 13.7);
-  width: calc(var(--u) * 10.4);
+  left: calc(50vw + var(--u) * 16);
+  width: calc(var(--u) * 13);
   height: auto;
   pointer-events: none;
 }
