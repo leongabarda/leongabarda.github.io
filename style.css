@@ -1,28 +1,15 @@
 
-/* =========================
-   LEON GABARDA — MAIN STYLES
-   ========================= */
 
 @font-face {
   font-family: "Neue Helvetica";
   src: local("Neue Helvetica Bold"),
        local("Helvetica Neue Bold");
   font-weight: 700;
-  font-style: normal;
 }
-
-body {
-  font-family: "Neue Helvetica", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 700;
-}
-
-
 
 :root {
-  --background: #ffffff;
-  --text: #490d29;
-  --burgundy: #490d29;
-  --font-main: Arial, Helvetica, sans-serif;
+  --black: #080808;
+  --burgundy: #4a0928;
 }
 
 * {
@@ -35,118 +22,99 @@ html {
 
 body {
   margin: 0;
-  background: var(--background);
-  color: var(--text);
-  font-family: var(--font-main);
+  background: #fff;
+  color: var(--black);
+  font-family: "Neue Helvetica", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
   -webkit-font-smoothing: antialiased;
 }
 
 img {
   display: block;
-  max-width: 100%;
 }
 
-/* =========================
-   HEADER / LOGO
-   ========================= */
+/* HEADER */
 
 .header {
-  width: 100%;
-  height: 115px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 25px 20px;
-}
-
-.brand {
+  height: 125px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  color: var(--text);
-  text-decoration: none;
 }
 
-.brand span {
-  font-size: 17px;
-  line-height: 0.88;
-  font-weight: 900;
-  letter-spacing: -0.7px;
-  text-align: right;
+.header a {
+  display: block;
 }
 
-.brand-logo {
-  width: 44px;
-  height: 44px;
+.header-logo {
+  width: 110px;
+  height: 65px;
   object-fit: contain;
 }
 
-/* =========================
-   INTRO / PHOTOGRAPHS
-   ========================= */
+/* MAIN PHOTO COMPOSITION */
 
-.intro {
+.hero {
   position: relative;
-  width: 100%;
   min-height: 620px;
-  padding-top: 60px;
+  padding-top: 35px;
+}
+
+.photos {
+  width: 188px;
+  margin: 0 auto;
 }
 
 .photo {
-  width: 188px;
-  margin-left: auto;
-  margin-right: auto;
-  overflow: hidden;
-  background: #eeeeee;
-}
-
-.photo-top {
-  height: 255px;
-}
-
-.photo-bottom {
-  height: 255px;
-}
-
-.photo img {
   width: 100%;
-  height: 100%;
+  height: 245px;
   object-fit: cover;
 }
 
-/* Text across both photographs */
+.photo-two {
+  margin-top: 0;
+}
+
+/* CENTERED BLACK STATEMENT */
 
 .statement {
   position: absolute;
   z-index: 2;
-  top: 305px;
-  left: 0;
+  top: 270px;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
-  padding: 0 24px;
+  padding: 0 28px;
+
+  color: #080808;
   text-align: center;
-}
-
-.statement p {
-  margin: 0 auto;
-  max-width: 1000px;
-  font-size: clamp(13px, 2.2vw, 17px);
-  font-weight: 900;
+  font-size: clamp(13px, 1.5vw, 17px);
   line-height: 1.05;
-  letter-spacing: -0.45px;
+  font-weight: 900;
+  letter-spacing: -0.35px;
 }
 
-/* =========================
-   BOTTOM SECTION
-   ========================= */
+/* FLOATING BURGUNDY SHIELD */
 
-.next-section {
-  width: 100%;
+.floating-shield {
+  position: fixed;
+  z-index: 5;
+  width: 90px;
+  height: 100px;
+  top: 57%;
+  right: 12%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* LOWER SECTION */
+
+.lower {
   min-height: 480px;
-  padding: 65px 24px 100px;
+  padding: 45px 25px 100px;
 }
 
-.section-label {
+.intro-title {
   margin: 0;
   text-align: center;
   font-size: 14px;
@@ -154,131 +122,153 @@ img {
   font-weight: 900;
 }
 
-.bottom-content {
-  width: min(600px, 100%);
-  margin: 125px auto 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: start;
-  gap: 40px;
+.lower-layout {
+  position: relative;
+  width: min(650px, 100%);
+  min-height: 270px;
+  margin: 85px auto 0;
 }
 
+/* NUMBER CIRCLE */
+
+.orbit {
+  position: absolute;
+  left: 8%;
+  top: 0;
+  width: 150px;
+  height: 150px;
+}
+
+.orbit-logo {
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.number {
+  position: absolute;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.n1  { top: 0; left: 70px; }
+.n2  { top: 10px; right: 22px; }
+.n3  { top: 37px; right: 2px; }
+.n4  { top: 70px; right: 0; }
+.n5  { bottom: 17px; right: 17px; }
+.n6  { bottom: 0; left: 70px; }
+.n7  { bottom: 12px; left: 28px; }
+.n8  { top: 70px; left: 0; }
+.n9  { top: 38px; left: 6px; }
+.n10 { top: 12px; left: 22px; }
+.n11 { top: 22px; left: 49px; }
+.n12 { top: 48px; left: 22px; }
+
+/* BOTTOM TEXT */
+
 .description {
+  position: absolute;
+  top: 185px;
+  left: 0;
+  width: 50%;
   margin: 0;
   text-align: center;
-  font-size: 14px;
-  line-height: 1.05;
+  font-size: 12px;
   font-weight: 900;
-  letter-spacing: -0.3px;
+  line-height: 1.08;
 }
 
 .contact {
-  justify-self: center;
-  color: var(--text);
-  font-size: 14px;
-  line-height: 1.2;
+  position: absolute;
+  top: 185px;
+  right: 8%;
+  color: var(--black);
+  font-size: 12px;
   font-weight: 900;
   text-decoration: none;
-  transition: opacity 180ms ease;
 }
 
 .contact:hover {
   opacity: 0.5;
 }
 
-/* =========================
-   FLOATING BURGUNDY SHIELD
-   ========================= */
-
-.floating-shield {
-  position: fixed;
-  z-index: 10;
-  width: 86px;
-  height: 96px;
-  right: max(9%, calc((100vw - 850px) / 2));
-  top: 56%;
-  transform: translateY(-50%);
-  pointer-events: none;
-}
-
-/*
-  White silhouette with screen blending:
-  makes the content beneath the silhouette white.
-*/
-
-/* The burgundy logo sits above the white silhouette */
-
-.shield-logo {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-/* =========================
-   MOBILE
-   ========================= */
+/* MOBILE */
 
 @media (max-width: 600px) {
-
   .header {
     height: 100px;
   }
 
-  .brand span {
-    font-size: 15px;
+  .header-logo {
+    width: 100px;
+    height: 60px;
   }
 
-  .brand-logo {
-    width: 39px;
-    height: 39px;
+  .hero {
+    min-height: 510px;
+    padding-top: 25px;
   }
 
-  .intro {
-    min-height: 560px;
-    padding-top: 45px;
-  }
-
-  .photo {
+  .photos {
     width: 160px;
   }
 
-  .photo-top,
-  .photo-bottom {
-    height: 230px;
+  .photo {
+    height: 195px;
   }
 
   .statement {
-    top: 260px;
+    top: 225px;
     padding: 0 12px;
-  }
-
-  .statement p {
-    font-size: 12px;
-    line-height: 1.08;
-    letter-spacing: -0.3px;
-  }
-
-  .next-section {
-    min-height: 410px;
-    padding-top: 45px;
-  }
-
-  .bottom-content {
-    margin-top: 100px;
-    gap: 20px;
-  }
-
-  .description,
-  .contact {
     font-size: 11px;
+    line-height: 1.08;
+    letter-spacing: -0.2px;
   }
 
   .floating-shield {
     width: 65px;
-    height: 74px;
-    right: 8%;
-    top: 58%;
+    height: 75px;
+    right: 9%;
+    top: 53%;
+  }
+
+  .lower {
+    padding: 40px 20px 70px;
+    min-height: 420px;
+  }
+
+  .lower-layout {
+    margin-top: 65px;
+    min-height: 260px;
+  }
+
+  .orbit {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 125px;
+    height: 125px;
+  }
+
+  .orbit-logo {
+    width: 36px;
+    height: 36px;
+  }
+
+  .description {
+    top: 165px;
+    width: 65%;
+    font-size: 10px;
+  }
+
+  .contact {
+    top: 165px;
+    right: 0;
+    font-size: 10px;
   }
 }
+
