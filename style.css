@@ -2,17 +2,20 @@
 
 :root {
   --black: #080808;
-  --purple: #480e29;      /* ajusta al tono exacto de tu marca */
   --gray: #555555;
+
+  /* 1 unidad = 1% del ancho del escenario (máx. 600px) */
+  --u: min(1vw, 6px);
 }
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
-
-body {
+html, body {
   margin: 0;
   background: #fff;
+}
+
+body {
   color: var(--black);
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 700;
@@ -20,131 +23,98 @@ body {
   overflow-x: hidden;
 }
 
-img { display: block; }
+img { display: block; max-width: none; }
 
-/*
-  ESCENARIO: diseño base 270 x 525.
-  Todo va en cqw (1cqw = 1% del ancho del escenario),
-  así escala igual en móvil y PC.
-*/
+/* ESCENARIO: diseño base 270 x 525 */
 .stage {
   position: relative;
-  width: min(100%, 600px);   /* máximo en PC */
-  aspect-ratio: 270 / 525;
+  width: calc(var(--u) * 100);
+  height: calc(var(--u) * 194.4);
   margin: 0 auto;
-  container-type: inline-size;
   overflow: hidden;
 }
 
-.stage > * { position: absolute; }
+.stage > * { position: absolute; margin: 0; }
 
 /* HEADER */
 .header {
-  top: 2.5cqw;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 20cqw;
+  top: calc(var(--u) * 5);
+  left: calc(var(--u) * 40.3);
+  width: calc(var(--u) * 19.4);
   z-index: 6;
 }
-.header-logo { width: 100%; height: auto; }
+.header img { width: 100%; height: auto; }
 
 /* FOTOS */
 .photo {
-  left: 35.2cqw;
-  width: 24cqw;
-  height: 32.2cqw;
+  left: calc(var(--u) * 34.8);
+  width: calc(var(--u) * 24.4);
+  height: calc(var(--u) * 32.2);
   object-fit: cover;
 }
-.photo-one { top: 23.3cqw; }
-.photo-two { top: 61.1cqw; }
+.photo-one { top: calc(var(--u) * 23.3); }
+.photo-two { top: calc(var(--u) * 61.1); }
 
 /* TEXTOS */
 .statement {
   left: 0;
   width: 100%;
-  margin: 0;
   text-align: center;
   white-space: nowrap;
-  font-size: 2.15cqw;
-  line-height: 3cqw;
+  font-size: calc(var(--u) * 2.15);
+  line-height: calc(var(--u) * 3);
   font-weight: 800;
   letter-spacing: -0.01em;
-  text-transform: uppercase;
 }
-.statement-top    { top: 53.6cqw; z-index: 3; }
-.statement-bottom { top: 166.2cqw; z-index: 1; }
+.statement-top    { top: calc(var(--u) * 53.6);  z-index: 3; }
+.statement-bottom { top: calc(var(--u) * 166.5); z-index: 1; }
 
-/* ESCUDO (ya no es fixed) */
+/* ESCUDO */
 .shield {
-  top: 87.5cqw;
-  left: 63.5cqw;
-  width: 11.5cqw;
-  height: 13.5cqw;
-  object-fit: contain;
+  top: calc(var(--u) * 87.8);
+  left: calc(var(--u) * 63.7);
+  width: calc(var(--u) * 10.4);
+  height: auto;
   z-index: 5;
   pointer-events: none;
 }
 
 /* INTRO */
 .intro-title {
-  top: 105.8cqw;
+  top: calc(var(--u) * 106);
   left: 0;
   width: 100%;
-  margin: 0;
   text-align: center;
-  font-size: 2cqw;
+  font-size: calc(var(--u) * 2);
   line-height: 1;
   font-weight: 800;
 }
 .intro-title span { font-weight: 500; }
 
-/* CÍRCULO DE NÚMEROS */
+/* CÍRCULO (el SVG ya trae números y emblema) */
 .orbit {
-  top: 138.9cqw;
-  left: 25.2cqw;
-  width: 0;
-  height: 0;
+  top: calc(var(--u) * 121.5);
+  left: calc(var(--u) * 10.2);
+  width: calc(var(--u) * 31.5);
+  height: auto;
   z-index: 4;
-  color: var(--purple);
-}
-
-.num {
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 3.4cqw;
-  font-weight: 700;
-  line-height: 1;
-  /* coloca cada elemento en el círculo según --a */
-  transform:
-    translate(-50%, -50%)
-    rotate(var(--a))
-    translateY(-15.5cqw)
-    rotate(calc(var(--a) * -1));
-}
-
-.emblem {
-  width: 5.5cqw;
-  height: 5.5cqw;
-  object-fit: contain;
 }
 
 /* BLOQUE GRIS */
 .gray-block {
-  top: 141.5cqw;
-  left: 35.2cqw;
-  width: 24cqw;
-  height: 32.6cqw;
+  top: calc(var(--u) * 141.5);
+  left: calc(var(--u) * 34.8);
+  width: calc(var(--u) * 24.4);
+  height: calc(var(--u) * 32.6);
   background: var(--gray);
   z-index: 2;
 }
 
 /* CONTACT */
 .contact {
-  top: 172.2cqw;
-  left: 59.5cqw;
-  font-size: 1.7cqw;
+  top: calc(var(--u) * 172.2);
+  left: calc(var(--u) * 59.3);
+  font-size: calc(var(--u) * 1.7);
   line-height: 1;
   font-weight: 800;
   color: var(--black);
