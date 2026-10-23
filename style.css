@@ -6,7 +6,7 @@
 
   /* UN solo color y tamaño para todo */
   --c: #480e29;
-  --fs: calc(var(--u) * 3.2);
+  --fs: calc(var(--u) * 2.3);
 }
 
 @supports (height: 1svh) {
@@ -40,15 +40,18 @@ p, h2, a {
 
 img { display: block; max-width: none; }
 
-/* VECTORES RECOLOREADOS CON #480e29 (SVG como máscara) */
-.logo {
-  background: var(--c);
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  -webkit-mask-size: contain;
-  mask-size: contain;
+/* VECTORES EN GRANATE #480e29
+   La imagen original se desplaza fuera de la caja (queda recortada)
+   y su sombra, del color --c, cae justo en el sitio original. */
+.tint {
+  overflow: hidden;
+}
+
+.tint img {
+  width: 100%;
+  height: auto;
+  transform: translateX(-100%);
+  filter: drop-shadow(var(--w) 0 0 var(--c));
 }
 
 /* PÁGINA */
@@ -65,10 +68,8 @@ img { display: block; max-width: none; }
 .header { display: block; margin-bottom: calc(var(--u) * 5); }
 
 .header-logo {
-  width: calc(var(--u) * 36);
-  aspect-ratio: 453 / 137;
-  -webkit-mask-image: url("./Recurso%202lg.svg");
-  mask-image: url("./Recurso%202lg.svg");
+  --w: calc(var(--u) * 36);
+  width: var(--w);
 }
 
 /* FOTOS (todas iguales) */
@@ -78,12 +79,11 @@ img { display: block; max-width: none; }
   object-fit: cover;
 }
 
-/* TEXTO CENTRAL: pegado a la foto de arriba y a la de abajo */
+/* TEXTO CENTRAL: 3 líneas fijas, pegado a la foto de arriba y a la de abajo */
 .statement {
   width: 100%;
-  padding: 0 calc(var(--u) * 3);
   text-align: center;
-  text-wrap: balance;
+  white-space: nowrap;
   letter-spacing: -0.01em;
 }
 
@@ -104,14 +104,12 @@ img { display: block; max-width: none; }
 
 /* RELOJ (solo el vector) */
 .clock {
+  --w: calc(var(--u) * 42);
   position: absolute;
   z-index: 2;
   left: calc(var(--u) * 1);
   top: calc(var(--u) * -22);
-  width: calc(var(--u) * 42);
-  aspect-ratio: 223 / 227;
-  -webkit-mask-image: url("./Recurso%204lg.svg");
-  mask-image: url("./Recurso%204lg.svg");
+  width: var(--w);
   pointer-events: none;
 }
 
@@ -136,13 +134,11 @@ img { display: block; max-width: none; }
 
 /* ESCUDO FLOTANTE */
 .shield {
+  --w: calc(var(--u) * 20);
   position: fixed;
   z-index: 10;
   top: 50vh;
   left: calc(50vw + var(--u) * 14);
-  width: calc(var(--u) * 20);
-  aspect-ratio: 219 / 226;
-  -webkit-mask-image: url("./Recurso%203lg.svg");
-  mask-image: url("./Recurso%203lg.svg");
+  width: var(--w);
   pointer-events: none;
 }
