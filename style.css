@@ -5,7 +5,7 @@
   --u: min(1vw, 0.6vh);
 
   /* UN solo estilo para todo el texto */
-  --text-color: #080808;
+  --text-color: #480e29;
   --fs: calc(var(--u) * 1.85);
 }
 
