@@ -1,10 +1,10 @@
 
 
 :root {
-  --black: #080808;
-  --gray: #555555;
+  --text-color: #080808;      /* color único de todo el texto */
+  --fs: calc(var(--u) * 2);   /* tamaño único de todo el texto */
 
-  /* 1 unidad = 1% del ancho del escenario (máx. 600px) */
+  /* 1 unidad = 1% del ancho (máx. 600px en PC) */
   --u: min(1vw, 6px);
 }
 
@@ -15,110 +15,104 @@ html, body {
   background: #fff;
 }
 
+/* TODO el texto hereda esto: mismo tamaño, color y peso */
 body {
-  color: var(--black);
+  color: var(--text-color);
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: var(--fs);
   font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
+p, h2, a {
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  text-decoration: none;
+}
+
 img { display: block; max-width: none; }
 
-/* ESCENARIO: diseño base 270 x 525 */
-.stage {
-  position: relative;
+/* PÁGINA */
+.page {
   width: calc(var(--u) * 100);
-  height: calc(var(--u) * 194.4);
   margin: 0 auto;
-  overflow: hidden;
+  padding: calc(var(--u) * 5) 0 calc(var(--u) * 12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
-.stage > * { position: absolute; margin: 0; }
 
 /* HEADER */
-.header {
-  top: calc(var(--u) * 5);
-  left: calc(var(--u) * 40.3);
-  width: calc(var(--u) * 19.4);
-  z-index: 6;
-}
+.header { display: block; width: calc(var(--u) * 19.4); }
 .header img { width: 100%; height: auto; }
 
-/* FOTOS */
+/* COLLAGE: foto / texto / foto, pegados sin huecos */
+.collage {
+  margin-top: calc(var(--u) * 7);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .photo {
-  left: calc(var(--u) * 34.8);
   width: calc(var(--u) * 24.4);
   height: calc(var(--u) * 32.2);
   object-fit: cover;
 }
-.photo-one { top: calc(var(--u) * 23.3); }
-.photo-two { top: calc(var(--u) * 61.1); }
 
-/* TEXTOS */
 .statement {
-  left: 0;
   width: 100%;
   text-align: center;
   white-space: nowrap;
-  font-size: calc(var(--u) * 2.15);
-  line-height: calc(var(--u) * 3);
-  font-weight: 800;
   letter-spacing: -0.01em;
 }
-.statement-top    { top: calc(var(--u) * 53.6);  z-index: 3; }
-.statement-bottom { top: calc(var(--u) * 166.5); z-index: 1; }
 
-/* ESCUDO */
-.shield {
-  top: calc(var(--u) * 87.8);
-  left: calc(var(--u) * 63.7);
-  width: calc(var(--u) * 10.4);
+/* INTRO centrado, mismo espacio arriba y abajo */
+.intro-title {
+  margin-top: calc(var(--u) * 15);
+  margin-bottom: calc(var(--u) * 33.8);
+  text-align: center;
+}
+
+/* PARTE DE ABAJO */
+.lower {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr calc(var(--u) * 24.4) 1fr;
+  align-items: end;
+}
+
+.lower-photo { height: calc(var(--u) * 32.6); }
+
+.side { align-self: end; }
+.side-left  { text-align: right; }   /* pegado a la foto por la izquierda */
+.side-right { text-align: left; }    /* pegado a la foto por la derecha */
+.side-right:hover { opacity: .5; }
+
+/* RELOJ (solo el vector), encima de la foto como en la referencia */
+.clock {
+  position: absolute;
+  left: calc(var(--u) * 10);
+  top: calc(var(--u) * -18.8);
+  width: calc(var(--u) * 31.5);
   height: auto;
-  z-index: 5;
+  z-index: 2;
   pointer-events: none;
 }
 
-/* INTRO */
-.intro-title {
-  top: calc(var(--u) * 106);
-  left: 0;
-  width: 100%;
-  text-align: center;
-  font-size: calc(var(--u) * 2);
-  line-height: 1;
-  font-weight: 800;
-}
-.intro-title span { font-weight: 500; }
-
-/* CÍRCULO (el SVG ya trae números y emblema) */
-.orbit {
-  top: calc(var(--u) * 121.5);
-  left: calc(var(--u) * 10.2);
-  width: calc(var(--u) * 31.5);
+/* ESCUDO FLOTANTE */
+.shield {
+  position: fixed;
+  z-index: 10;
+  top: 45vh;
+  left: calc(50vw + var(--u) * 13.7);
+  width: calc(var(--u) * 10.4);
   height: auto;
-  z-index: 4;
+  pointer-events: none;
 }
-
-/* BLOQUE GRIS */
-.gray-block {
-  top: calc(var(--u) * 141.5);
-  left: calc(var(--u) * 34.8);
-  width: calc(var(--u) * 24.4);
-  height: calc(var(--u) * 32.6);
-  background: var(--gray);
-  z-index: 2;
-}
-
-/* CONTACT */
-.contact {
-  top: calc(var(--u) * 172.2);
-  left: calc(var(--u) * 59.3);
-  font-size: calc(var(--u) * 1.7);
-  line-height: 1;
-  font-weight: 800;
-  color: var(--black);
-  text-decoration: none;
-  z-index: 6;
-}
-.contact:hover { opacity: .5; }
